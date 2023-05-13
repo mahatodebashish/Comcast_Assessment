@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ScreenB" extends="Group" initialFocus="rectangle" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+  <script type = "text/brightscript" >
+    <![CDATA[
+    sub init()
+
+        di = CreateObject("roDeviceInfo")
+        uiRes = di.GetUIResolution()
+
+        m.titleB = m.top.findNode("titleB")
+        m.imageB = m.top.findNode("imageB")
+        m.button = m.top.findNode("button")
+         m.group = m.top.findNode("group")
+        m.numberSetB = m.top.findNode("numberSetB")
+
+      
+
+      examplerect = m.group.boundingRect()
+
+      centerx = (1280 - examplerect.width) / 2
+      centery = (720 - examplerect.height) / 2
+      m.group.translation =[200,100] '[ centerx, centery ]
+
+     
+      m.titleB.text= m.global.titleScreenB
+      m.imageB.uri=m.global.logoB
+
+      m.textNumberSetB=""
+      m.k=0
+
+     for i=0 to m.global.numberSetB.count()-1 step 1
+     print m.global.numberSetB[i].toStr() + " " 
+
+     if (  m.global.numberSetB[i] MOD 2 = 0 and m.k<5)
+    
+     m.textNumberSetB =  m.textNumberSetB + " " +  m.global.numberSetB[i].toStr() 
+     m.k++
+
+     end if
+
+     end for 
+
+     
+
+    m.numberSetB.text = m.textNumberSetB
+
+   
+       
+    end sub
+
+    
+    
+  
+    ]]>
+  </script>
+ 
+ <children>
+ 
+   <Group
+   id="group"
+   >
+     <Label
+  id="titleB"
+  height="44"
+  width="0"
+  font="font:MediumBoldSystemFont"
+  text = "Screen B title"
+  horizAlign = "left"
+  vertAlign = "center"
+  color="#ffffff"
+  translation="[318,8]" />
+
+ <Poster
+  id="imageB"
+  uri="pkg:/images/icon_focus_hd.png"
+  width="300"
+  height="200"
+  loadWidth="300"
+  loadHeight="200"
+  translation="[200,100]" />
+
+<Label
+  height="44"
+  width="0"
+  font="font:SmallestSystemFont"
+  text = "Find all even numbers, sort them high to low, and present the FIRST FIVE results to
+the screen. : "
+  horizAlign = "center"
+  vertAlign = "center"
+  color="#000000"
+  translation="[220,320]" />
+
+  
+   <Label
+  id="numberSetB"
+  height="44"
+  width="0"
+  font="font:SmallestSystemFont"
+  text = "Number Set B ="
+  horizAlign = "center"
+  vertAlign = "center"
+  color="#000000"
+  translation="[220,360]" />
+
+<Rectangle
+  id="rectangle"
+  width="300"
+  height="50"
+  color="#ffffff"
+  translation="[200,400]" >
+  
+   <Label
+  id="button"
+  height="44"
+  width="0"
+  font="font:SmallestSystemFont"
+  text = "Press OK to Goto Screen A"
+  horizAlign = "left"
+  vertAlign = "center"
+
+  color="#000000"
+  translation="[40,0]" />
+  
+  </Rectangle>
+
+
+   </Group>
+   
+
+ </children>
+</component>

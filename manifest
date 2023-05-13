@@ -1,0 +1,9 @@
+title=Comcast Assessment
+major_version=1
+minor_version=0
+build_version=0
+mm_icon_focus_hd=pkg:/images/icon_focus_hd.png
+splash_screen_hd=pkg:/images/splash_hd.jpg
+splash_color=#231f20
+ui_resolutions=hd
+run_as_process=1

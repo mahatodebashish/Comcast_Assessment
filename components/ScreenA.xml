@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ScreenA" extends="Group" initialFocus="rectangle" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+  <script type = "text/brightscript" >
+    <![CDATA[
+    sub init()
+        di = CreateObject("roDeviceInfo")
+
+        uiRes = di.GetUIResolution()
+        m.titleA = m.top.findNode("titleA")
+        m.imageA = m.top.findNode("imageA")
+        m.button = m.top.findNode("button")
+        m.group = m.top.findNode("group") 
+        m.numberSetA = m.top.findNode("numberSetA")
+      
+      examplerect = m.group.boundingRect()
+
+      centerx = (1280 - examplerect.width) / 2
+      centery = (720 - examplerect.height) / 2
+      m.group.translation =[200,100] '[ centerx, centery ]
+
+
+   
+      m.titleA.text= m.global.titleScreenA
+      m.imageA.uri=m.global.logoA
+
+      m.textNumberSetA=""
+      
+
+    ' for i=0 to m.global.numberSetA.count()-1 step 1
+    ' print m.global.numberSetA[i].toStr() + " " 
+    ' end for 
+
+      m.i=0
+      m.size=m.global.numberSetA.count()-1
+      while ( m.i <> 5)
+       m.textNumberSetA =   m.global.numberSetA[m.size].toStr() + " " + m.textNumberSetA 
+       m.size--
+       m.i++
+      end while
+
+    m.numberSetA.text = m.textNumberSetA
+       
+    end sub
+
+ 
+
+' Define a function to set a value with the results of an API call
+function setValueFromAPIResults(results as String)
+    ' Parse the results as needed
+    value = ParseJson(results)
+    ' Set the value
+    m.value = value
+
+    m.titleA.text=value.record.ScreenA.title
+end function
+  
+    ]]>
+  </script>
+ 
+ <children>
+ 
+   <Group
+   id="group"
+   >
+     <Label
+  id="titleA"
+  height="44"
+  width="0"
+  font="font:MediumBoldSystemFont"
+  text = "Screen A title"
+  horizAlign = "center"
+  vertAlign = "center"
+  color="#000000"
+  translation="[250,8]" />
+
+ <Poster
+  id="imageA"
+  uri="pkg:/images/icon_focus_hd.png"
+  width="300"
+  height="200"
+  loadWidth="300"
+  loadHeight="200"
+  translation="[200,100]" />
+
+
+
+ <Label
+  height="44"
+  width="0"
+  font="font:SmallestSystemFont"
+  text = "Sort the numbers from high to low and present the LAST FIVE results to the screen  : "
+  horizAlign = "center"
+  vertAlign = "center"
+  color="#000000"
+  translation="[220,320]" />
+
+
+
+   <Label
+  id="numberSetA"
+  height="44"
+  width="0"
+  font="font:SmallestSystemFont"
+  text = "Number Set A ="
+  horizAlign = "center"
+  vertAlign = "center"
+  color="#000000"
+  translation="[220,360]" />
+
+
+<Rectangle
+  id="rectangle"
+  width="300"
+  height="50"
+  color="#ffffff"
+  translation="[200,450]" >
+  
+   <Label
+  id="button"
+  height="44"
+  width="0"
+  font="font:SmallestSystemFont"
+  text = " Press OK to Goto Screen B "
+  horizAlign = "left"
+  vertAlign = "center"
+
+  color="#000000"
+  translation="[40,0]" />
+  
+  </Rectangle>
+
+
+   </Group>
+   
+
+ </children>
+</component>
