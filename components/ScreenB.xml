@@ -23,9 +23,12 @@
       m.group.translation =[200,100] '[ centerx, centery ]
 
      
-      m.titleB.text= m.global.titleScreenB
-      m.imageB.uri=m.global.logoB
+      m.titleB.text= m.global.titleScreenB ' Setting title text A
+      m.imageB.uri=m.global.logoB          ' Setting image uri logo B
 
+
+     ' Logic to Find all even numbers, sort them high to low, and present the FIRST FIVE results to the screen. :
+   
       m.textNumberSetB=""
       m.k=0
 
