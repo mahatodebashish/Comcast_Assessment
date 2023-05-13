@@ -25,13 +25,15 @@ sub Main()
 
     json=ParseJson(rsp)
 
+   ' Storing the results to global variable so that it can be used later
+   
     m.global.titleScreenA=json.record.record.ScreenA.title
     m.global.titleScreenB=json.record.record.ScreenB.title
     m.global.logoA=json.record.record.ScreenA.logo
     m.global.logoB=json.record.record.ScreenB.logo
    
-   json.record.record.ScreenA.numberSet.Sort("r")
-   json.record.record.ScreenB.numberSet.Sort("r")
+   json.record.record.ScreenA.numberSet.Sort("r")  ' Sorting descending order of number set A
+   json.record.record.ScreenB.numberSet.Sort("r")  ' Sorting descending order of number set B
 
    m.global.numberSetA=json.record.record.ScreenA.numberSet
    m.global.numberSetB=json.record.record.ScreenB.numberSet
