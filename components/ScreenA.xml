@@ -21,8 +21,8 @@
 
 
    
-      m.titleA.text= m.global.titleScreenA
-      m.imageA.uri=m.global.logoA
+      m.titleA.text= m.global.titleScreenA  ' Setting the title A text
+      m.imageA.uri=m.global.logoA           ' Setting the  Logo A image
 
       m.textNumberSetA=""
       
@@ -31,6 +31,7 @@
     ' print m.global.numberSetA[i].toStr() + " " 
     ' end for 
 
+     ' Logic to Sort the numbers from high to low and present the LAST FIVE results to the screen 
       m.i=0
       m.size=m.global.numberSetA.count()-1
       while ( m.i <> 5)
